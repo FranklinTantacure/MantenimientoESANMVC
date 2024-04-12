@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SisEdutiva_prodModelStoreContainer" CdmEntityContainer="SisEdutiva_prodEntities">
+    <EntitySetMapping Name="promocionZoomdle">
+      <EntityTypeMapping TypeName="SisEdutiva_prodModel.promocionZoomdle">
+        <MappingFragment StoreEntitySet="promocionZoomdle">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="promocioncodigo" ColumnName="promocioncodigo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

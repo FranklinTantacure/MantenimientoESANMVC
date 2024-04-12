@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "AdministradorModulo3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <br />
+    <h2>Buscar Alumno</h2>
+    <br />
+
+
+    @using (Html.BeginForm("BuscarNombre", "Home", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-6 col-sm-2">
+                <i class="fas fa-user prefix grey-text"></i>
+                <label class="form-label">Buscar Nombre / Codigo</label>
+                @*<input type="text" class="form-control" value="@ViewBag.idactor" data-nombre="@ViewBag.NombreCompletos" name="buscar" placeholder="Nombre/Codigo" required />*@
+
+                <input type="text" id="inputBusqueda" class="form-control mt-3 col-sm-9" name="buscar" placeholder="Escribe para buscar" required />
+                <option value="">Selecciona una opción</option>
+                <select id="selectBusqueda" class="form-control" name="buscar">
+                    @if (ViewBag.idactor != null && ViewBag.NombreCompletos != null)
+                    {
+                        for (int i = 0; i < ViewBag.idactor.Count; i++)
+                        {
+                            <option value="@ViewBag.idactor[i]">@ViewBag.NombreCompletos[i]</option>
+                        }
+                    }
+                </select>
+
+            </div>
+            <div class="col-6 col-sm-4">
+                <button type="submit" class="btn btn-success mt-5">Buscar Alumno</button><br /><br />
+                <button id="btnBuscarCurso" class="btn btn-danger">Buscar Cursos</button>
+            
+            </div>
+
+        </div>
+
+
+    }
+    <br />
+    @*<input type="text" class="form-control" value="@ViewBag.idactor" data-nombre="@ViewBag.NombreCompletos" />*@ @*ME PINTE ACA EL NOMBRE DE ESA PERSONA QUE ESTOY BUSCANDO*@
+
+
+    <div>
+        <!-- Botón para llamar al método BuscarCurso -->
+        @*<button id="btnBuscarCurso" class="btn btn-primary">Buscar Cursos</button>*@
+    </div>
+
+    <br />
+    <br />
+    <table id="tablaprogramador" class="table table-striped text-center" style="width:100%">
+        <thead>
+            <tr>
+                <th>id Alumno</th>
+                <th>Curso Nombre</th>
+                <th>id Curso</th>
+                <th>id Seccion</th>
+                <th>Acciones</th> <!-- Nueva columna para Acciones -->
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (ViewBag.NombresCursos != null)
+            {
+                foreach (var curso in ViewBag.NombresCursos)
+                {
+                    if (curso != null)
+                    {
+                        <tr>
+                            <td>@curso.IdAlumno</td>
+                            <td>@curso.CursoNombre</td>
+                            <td>@curso.IdCurso</td>
+                            <td>@curso.IdSeccion</td>
+                            <!-- Nueva celda para el botón de Actualizar -->
+                            <td>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-sync-alt"></i> Actualizar
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#tablaprogramador").DataTable()
+        })
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var nombreCompleto = $("input[data-nombre]").data("nombre"); // Obtener el nombre completo del atributo data-nombre
+            $("input[data-nombre]").val(nombreCompleto); // Establecer el valor del input como el nombre completo
+        });
+    </script>
+
+    <script>
+        // Función para filtrar las opciones del select según el texto ingresado en el input de búsqueda
+        $("#inputBusqueda").on("input", function () {
+            var filtro = $(this).val().toLowerCase();
+            $("#selectBusqueda option").each(function () {
+                var textoOpcion = $(this).text().toLowerCase();
+                $(this).toggle(textoOpcion.includes(filtro));
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Evento click del botón
+            $("#btnBuscarCurso").click(function () {
+                // Obtener el valor y texto seleccionado del select
+                var idActor = $("#selectBusqueda").val();
+                var nombreCompleto = $("#selectBusqueda option:selected").text();
+
+                // Redirigir al controlador con el valor del select
+                window.location.href = "/Home/BuscarCurso?idactor=" + idActor;
+
+               
+            });
+        });
+    </script>
+
+
+}   

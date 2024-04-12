@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    @*<link href="~/Content/admin-styles.css" rel="stylesheet" />*@
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    @*<link rel="stylesheet" href="~/Scripts/fontawesome/all.min.js">*@
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <!-- Estilos específicos para Página de Inicio -->
+
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.png" />
+
+
+    @*<link href="~/Content/pagina-inicio-styles.css" rel="stylesheet" />*@
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <!-- CSS Files -->
+    @*<link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/assets/css/material-bootstrap-wizard.css" rel="stylesheet" />*@
+
+
+    <link href="~/assets/css/demo.css" rel="stylesheet" />
+
+
+
+    @RenderSection("styles", required: false) <!-- Sección para estilos específicos de cada vista -->
+
+
+</head>
+
+
+  
+
+    
+
+<body class="sb-nav-fixed">
+
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+
+        <div class="sdp-header-logo disp-ib">
+            <img id="headinstanceicon" data-id="headinstanceicon" alt="Logotipo del portal" src="~/assets/img/logo_ESAN.gif" class="esm-headerlogoimg " width="155" height="34" style="width:155px;height:34px" border="0">
+            @*<span id="headOrgName" class="text-overflow h4 ml10 ins-title  hide ">Esan.edu.pe</span>*@
+        </div>
+
+
+        <div class="logo-container">
+            <div class="logo">
+                <img src="~/assets/img/new_logo.png">
+            </div>
+
+        </div>
+
+
+        <!-- Navbar Brand-->
+        @*<a class="navbar-brand ps-3" href="index.html">Administrador: </a>*@
+        <!-- Sidebar Toggle-->
+        <div class="sesion">@Session["UsuarioAdmin"]</div>
+
+
+        <!-- Navbar-->
+        <ul class="float-md-end">
+            <li class="punto">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-fw fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="@Url.Action("PaginaInicio","Home")">Inicio</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdo" href="@Url.Action("Index","Home")"><i class="ion-locked"></i> Cerrar Sesión</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+
+
+
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <br />
+
+                        @*PRIMERO NAVEGADOR*@
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active fondo" id="zoomble-primero">
+                                <i class="ion-android-desktop"></i>
+                                <p class="etiqueta">
+                                    ZOOMBLE
+                                    <i id="arrow-icon_primero" class="ion-chevron-left"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Administrador","Home")" class="nav-link">
+                                        <i class="ion-leaf"></i>
+                                        <p class="etiqueta">Codigos Zoomdle</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <br />
+
+                        @*SEGUNDO NAVEGADOR*@
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active fondo" id="zoomble-segundo">
+                            <i class="ion-android-desktop"></i>
+                            <p class="etiqueta">
+                                EDUTIVA
+                                <i id="arrow-icon_segundo" class="ion-chevron-left"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a href="@Url.Action("PaginaInicio2","Home")" class="nav-link">
+                                    <i class="ion-leaf"></i>
+                                    <p class="etiqueta">Es Planta</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a href="@Url.Action("AdministradorModulo3","Home")" class="nav-link">
+                                    <i class="ion-leaf"></i>
+                                    <p class="etiqueta">Update Retiro</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+
+
+
+
+                        @*TERCER NAVEGADOR*@
+                        @*<li class="nav-item">
+                            <a href="#" class="nav-link active fondo" id="zoomble-tercero">
+                                <i class="ion-android-desktop"></i>
+                                <p class="etiqueta">
+                                    ZOOMBLE
+                                    <i id="arrow-icon_tercero" class="ion-chevron-left"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("AdministradorModulo3","Home")" class="nav-link">
+                                        <i class="ion-leaf"></i>
+                                        <p class="etiqueta">Codigos Zoomdle</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <br />*@
+
+                    </div>
+                </div>
+
+
+
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Start Bootstrap
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+
+            <main>
+                <div class="container-fluid px-4">
+                    @RenderBody()
+                </div>
+            </main>
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/js/scripts.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+
+
+    <!-- Scripts específicos para Administrador -->
+    @if (ViewBag.Title == "Administrador")
+    {
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+
+    }
+
+
+    <!-- Scripts específicos para Página de Inicio -->
+    @if (ViewBag.Title == "PaginaInicio")
+    {
+        @*<script src="~/Scripts/pagina-inicio-scripts.js"></script>*@
+
+        <script src="~/assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+        <script src="~/assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="~/assets/js/jquery.bootstrap.js" type="text/javascript"></script>
+
+
+        <script src="~/assets/js/material-bootstrap-wizard.js"></script>
+
+
+        <script src="~/assets/js/jquery.validate.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
+    }
+
+
+
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+

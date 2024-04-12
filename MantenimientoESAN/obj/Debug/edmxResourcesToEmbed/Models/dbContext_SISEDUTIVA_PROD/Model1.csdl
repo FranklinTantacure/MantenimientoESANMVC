@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SisEdutivaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PromocionZoomdle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="PromocionCodigo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityContainer Name="SisEdutiva_prodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PromocionZoomdle" EntityType="Self.PromocionZoomdle" />
+    <FunctionImport Name="SP_BUSCAR_ALUMNO" ReturnType="Collection(SisEdutivaModel.SP_BUSCAR_ALUMNO_Result)">
+      <Parameter Name="Buscar" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_BUSCAR_CURSO" ReturnType="Collection(SisEdutivaModel.SP_BUSCAR_CURSO_Result)">
+      <Parameter Name="IdActor" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CambiarEsPlanta" ReturnType="Collection(SisEdutivaModel.SP_CambiarEsPlanta_Result)">
+      <Parameter Name="IdActor" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CambiarEsPlantaListar" ReturnType="Collection(SisEdutivaModel.SP_CambiarEsPlantaListar_Result)" />
+  </EntityContainer>
+  <ComplexType Name="SP_BUSCAR_ALUMNO_Result">
+    <Property Type="Int32" Name="IdActor" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SP_BUSCAR_CURSO_Result">
+    <Property Type="Int32" Name="IdAlumno" Nullable="true" />
+    <Property Type="Int32" Name="IdCurso" Nullable="false" />
+    <Property Type="Int32" Name="IdSeccion" Nullable="true" />
+    <Property Type="String" Name="CursoNombre" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="SP_CambiarEsPlanta_Result">
+    <Property Type="Int32" Name="IdActor" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="SP_CambiarEsPlantaListar_Result">
+    <Property Type="Boolean" Name="EsPlanta" Nullable="true" />
+    <Property Type="Int32" Name="IdActor" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="true" MaxLength="150" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ws.esan.edu.pe/seguridad" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://ws.esan.edu.pe/seguridad" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.esan.edu.pe/seguridad">
+      <s:element name="ValidarUsuarioLDAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioLDAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidarUsuarioLDAPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioLDAPPorPathLDAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dominio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LDAP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioLDAPPorPathLDAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidarUsuarioLDAPPorPathLDAPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioLDAPJSON">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioLDAPJSONResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidarUsuarioLDAPJSONResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioXLDAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idSistema" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioXLDAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidarUsuarioXLDAPResult" type="tns:Usuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Usuario">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdActor" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Roles" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuarioRol" type="tns:ArrayOfUsuario_Rol" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreCompleto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Usu_Responsable" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioCreacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioModificacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaModificacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario3" type="tns:ArrayOfUsuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario5" type="tns:ArrayOfUsuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario7" type="tns:ArrayOfUsuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario_Asignado" type="tns:ArrayOfUsuario_Asignado" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario_Cargo" type="tns:ArrayOfUsuario_Cargo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUsuario_Rol">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Usuario_Rol" nillable="true" type="tns:Usuario_Rol" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuario_Rol">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuAsgId" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PerfilId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioCreacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioModificacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaModificacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activado" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Perfil" type="tns:Perfil" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Perfil">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sist_Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioCreacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioModificacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaModificacion" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUsuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Usuario" nillable="true" type="tns:Usuario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUsuario_Asignado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Usuario_Asignado" nillable="true" type="tns:Usuario_Asignado" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuario_Asignado">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuId" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UndId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaInicio" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaFin" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioCreacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioModificacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaModificacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario_Rol" type="tns:ArrayOfUsuario_Rol" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUsuario_Cargo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Usuario_Cargo" nillable="true" type="tns:Usuario_Cargo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuario_Cargo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCargo" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="idUsuario" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="estado" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaModificacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioModificacion" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="NoValidarUsuarioXLDAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idSistema" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NoValidarUsuarioXLDAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NoValidarUsuarioXLDAPResult" type="tns:Usuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncriptarRijndael">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncriptarRijndaelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncriptarRijndaelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncriptarRijndaelTemporal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncriptarRijndaelTemporalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncriptarRijndaelTemporalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesencriptarRijndael">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesencriptarRijndaelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesencriptarRijndaelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesencriptarRijndaelTemporal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="texto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DesencriptarRijndaelTemporalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DesencriptarRijndaelTemporalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarPerfilXIdSistema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSistema" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarPerfilXIdSistemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarPerfilXIdSistemaResult" type="tns:ArrayOfPerfil" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPerfil">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Perfil" nillable="true" type="tns:Perfil" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarCargo">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarCargoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarCargoResult" type="tns:ArrayOfCargo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCargo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cargo" nillable="true" type="tns:Cargo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cargo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idCargo" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreCargo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idUnidad" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioCreacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioModificacion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaModificacion" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario_Cargo" type="tns:ArrayOfUsuario_Cargo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listarUsuarioXIdCargo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCargo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioXIdCargoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarUsuarioXIdCargoResult" type="tns:ArrayOfUsuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioXIdSistema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSistema" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUnidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioXIdSistemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarUsuarioXIdSistemaResult" type="tns:ArrayOfFacadeAutenticacionUsuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFacadeAutenticacionUsuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FacadeAutenticacionUsuario" nillable="true" type="tns:FacadeAutenticacionUsuario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FacadeAutenticacionUsuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="usuario" type="tns:Usuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="rol" type="tns:ArrayOfUsuario_Rol" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuarioAsignado" type="tns:Usuario_Asignado" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listarUsuarioXNombreCompleto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombreCompleto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioXNombreCompletoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarUsuarioXNombreCompletoResult" type="tns:ArrayOfUsuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarUsuarioXRolXSistemaXUnidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sistema" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="unidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuCreacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarUsuarioXRolXSistemaXUnidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="agregarUsuarioXRolXSistemaXUnidadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteUsuarioXRolXSistemaXUnidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sistema" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="unidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuCreacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteUsuarioXRolXSistemaXUnidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteUsuarioXRolXSistemaXUnidadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioLdap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dominio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioLdapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarUsuarioLdapResult" type="tns:ArrayOfADUsuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfADUsuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ADUsuario" nillable="true" type="tns:ADUsuario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ADUsuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginNameWithDomain" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Anexo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AgregarPerfilAUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idPerfil" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarPerfilAUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AgregarPerfilAUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarUnicoPerfilAUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idPerfil" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregarUnicoPerfilAUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AgregarUnicoPerfilAUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarPerfilAUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idPerfil" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarPerfilAUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarPerfilAUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidarUsuarioLDAPSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioLDAP" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioLDAPSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioLDAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioLDAPPorPathLDAPSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioLDAPPorPathLDAP" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioLDAPPorPathLDAPSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioLDAPPorPathLDAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioLDAPJSONSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioLDAPJSON" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioLDAPJSONSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioLDAPJSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioXLDAPSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioXLDAP" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioXLDAPSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioXLDAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="NoValidarUsuarioXLDAPSoapIn">
+    <wsdl:part name="parameters" element="tns:NoValidarUsuarioXLDAP" />
+  </wsdl:message>
+  <wsdl:message name="NoValidarUsuarioXLDAPSoapOut">
+    <wsdl:part name="parameters" element="tns:NoValidarUsuarioXLDAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarRijndaelSoapIn">
+    <wsdl:part name="parameters" element="tns:EncriptarRijndael" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarRijndaelSoapOut">
+    <wsdl:part name="parameters" element="tns:EncriptarRijndaelResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarRijndaelTemporalSoapIn">
+    <wsdl:part name="parameters" element="tns:EncriptarRijndaelTemporal" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarRijndaelTemporalSoapOut">
+    <wsdl:part name="parameters" element="tns:EncriptarRijndaelTemporalResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarRijndaelSoapIn">
+    <wsdl:part name="parameters" element="tns:DesencriptarRijndael" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarRijndaelSoapOut">
+    <wsdl:part name="parameters" element="tns:DesencriptarRijndaelResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarRijndaelTemporalSoapIn">
+    <wsdl:part name="parameters" element="tns:DesencriptarRijndaelTemporal" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarRijndaelTemporalSoapOut">
+    <wsdl:part name="parameters" element="tns:DesencriptarRijndaelTemporalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarPerfilXIdSistemaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarPerfilXIdSistema" />
+  </wsdl:message>
+  <wsdl:message name="ListarPerfilXIdSistemaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarPerfilXIdSistemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarCargoSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarCargo" />
+  </wsdl:message>
+  <wsdl:message name="ListarCargoSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarCargoResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioXIdCargoSoapIn">
+    <wsdl:part name="parameters" element="tns:listarUsuarioXIdCargo" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioXIdCargoSoapOut">
+    <wsdl:part name="parameters" element="tns:listarUsuarioXIdCargoResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioXIdSistemaSoapIn">
+    <wsdl:part name="parameters" element="tns:listarUsuarioXIdSistema" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioXIdSistemaSoapOut">
+    <wsdl:part name="parameters" element="tns:listarUsuarioXIdSistemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioXNombreCompletoSoapIn">
+    <wsdl:part name="parameters" element="tns:listarUsuarioXNombreCompleto" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioXNombreCompletoSoapOut">
+    <wsdl:part name="parameters" element="tns:listarUsuarioXNombreCompletoResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarUsuarioXRolXSistemaXUnidadSoapIn">
+    <wsdl:part name="parameters" element="tns:agregarUsuarioXRolXSistemaXUnidad" />
+  </wsdl:message>
+  <wsdl:message name="agregarUsuarioXRolXSistemaXUnidadSoapOut">
+    <wsdl:part name="parameters" element="tns:agregarUsuarioXRolXSistemaXUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteUsuarioXRolXSistemaXUnidadSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteUsuarioXRolXSistemaXUnidad" />
+  </wsdl:message>
+  <wsdl:message name="deleteUsuarioXRolXSistemaXUnidadSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteUsuarioXRolXSistemaXUnidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioLdapSoapIn">
+    <wsdl:part name="parameters" element="tns:listarUsuarioLdap" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioLdapSoapOut">
+    <wsdl:part name="parameters" element="tns:listarUsuarioLdapResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarPerfilAUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarPerfilAUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AgregarPerfilAUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarPerfilAUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregarUnicoPerfilAUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregarUnicoPerfilAUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AgregarUnicoPerfilAUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregarUnicoPerfilAUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarPerfilAUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarPerfilAUsuario" />
+  </wsdl:message>
+  <wsdl:message name="EliminarPerfilAUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarPerfilAUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SeguridadSoap">
+    <wsdl:operation name="ValidarUsuarioLDAP">
+      <wsdl:input message="tns:ValidarUsuarioLDAPSoapIn" />
+      <wsdl:output message="tns:ValidarUsuarioLDAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioLDAPPorPathLDAP">
+      <wsdl:input message="tns:ValidarUsuarioLDAPPorPathLDAPSoapIn" />
+      <wsdl:output message="tns:ValidarUsuarioLDAPPorPathLDAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioLDAPJSON">
+      <wsdl:input message="tns:ValidarUsuarioLDAPJSONSoapIn" />
+      <wsdl:output message="tns:ValidarUsuarioLDAPJSONSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioXLDAP">
+      <wsdl:input message="tns:ValidarUsuarioXLDAPSoapIn" />
+      <wsdl:output message="tns:ValidarUsuarioXLDAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NoValidarUsuarioXLDAP">
+      <wsdl:input message="tns:NoValidarUsuarioXLDAPSoapIn" />
+      <wsdl:output message="tns:NoValidarUsuarioXLDAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncriptarRijndael">
+      <wsdl:input message="tns:EncriptarRijndaelSoapIn" />
+      <wsdl:output message="tns:EncriptarRijndaelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EncriptarRijndaelTemporal">
+      <wsdl:input message="tns:EncriptarRijndaelTemporalSoapIn" />
+      <wsdl:output message="tns:EncriptarRijndaelTemporalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DesencriptarRijndael">
+      <wsdl:input message="tns:DesencriptarRijndaelSoapIn" />
+      <wsdl:output message="tns:DesencriptarRijndaelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DesencriptarRijndaelTemporal">
+      <wsdl:input message="tns:DesencriptarRijndaelTemporalSoapIn" />
+      <wsdl:output message="tns:DesencriptarRijndaelTemporalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPerfilXIdSistema">
+      <wsdl:input message="tns:ListarPerfilXIdSistemaSoapIn" />
+      <wsdl:output message="tns:ListarPerfilXIdSistemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCargo">
+      <wsdl:input message="tns:ListarCargoSoapIn" />
+      <wsdl:output message="tns:ListarCargoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXIdCargo">
+      <wsdl:input message="tns:listarUsuarioXIdCargoSoapIn" />
+      <wsdl:output message="tns:listarUsuarioXIdCargoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXIdSistema">
+      <wsdl:input message="tns:listarUsuarioXIdSistemaSoapIn" />
+      <wsdl:output message="tns:listarUsuarioXIdSistemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXNombreCompleto">
+      <wsdl:input message="tns:listarUsuarioXNombreCompletoSoapIn" />
+      <wsdl:output message="tns:listarUsuarioXNombreCompletoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuarioXRolXSistemaXUnidad">
+      <wsdl:input message="tns:agregarUsuarioXRolXSistemaXUnidadSoapIn" />
+      <wsdl:output message="tns:agregarUsuarioXRolXSistemaXUnidadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuarioXRolXSistemaXUnidad">
+      <wsdl:input message="tns:deleteUsuarioXRolXSistemaXUnidadSoapIn" />
+      <wsdl:output message="tns:deleteUsuarioXRolXSistemaXUnidadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioLdap">
+      <wsdl:input message="tns:listarUsuarioLdapSoapIn" />
+      <wsdl:output message="tns:listarUsuarioLdapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPerfilAUsuario">
+      <wsdl:input message="tns:AgregarPerfilAUsuarioSoapIn" />
+      <wsdl:output message="tns:AgregarPerfilAUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarUnicoPerfilAUsuario">
+      <wsdl:input message="tns:AgregarUnicoPerfilAUsuarioSoapIn" />
+      <wsdl:output message="tns:AgregarUnicoPerfilAUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfilAUsuario">
+      <wsdl:input message="tns:EliminarPerfilAUsuarioSoapIn" />
+      <wsdl:output message="tns:EliminarPerfilAUsuarioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SeguridadSoap" type="tns:SeguridadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidarUsuarioLDAP">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioLDAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioLDAPPorPathLDAP">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioLDAPPorPathLDAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioLDAPJSON">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioLDAPJSON" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioXLDAP">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioXLDAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NoValidarUsuarioXLDAP">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/NoValidarUsuarioXLDAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncriptarRijndael">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/EncriptarRijndael" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncriptarRijndaelTemporal">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/EncriptarRijndaelTemporal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesencriptarRijndael">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/DesencriptarRijndael" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesencriptarRijndaelTemporal">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/DesencriptarRijndaelTemporal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPerfilXIdSistema">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/ListarPerfilXIdSistema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCargo">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/ListarCargo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXIdCargo">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioXIdCargo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXIdSistema">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioXIdSistema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXNombreCompleto">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioXNombreCompleto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuarioXRolXSistemaXUnidad">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/agregarUsuarioXRolXSistemaXUnidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuarioXRolXSistemaXUnidad">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/deleteUsuarioXRolXSistemaXUnidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioLdap">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioLdap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPerfilAUsuario">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/AgregarPerfilAUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarUnicoPerfilAUsuario">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/AgregarUnicoPerfilAUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfilAUsuario">
+      <soap:operation soapAction="http://ws.esan.edu.pe/seguridad/EliminarPerfilAUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SeguridadSoap12" type="tns:SeguridadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidarUsuarioLDAP">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioLDAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioLDAPPorPathLDAP">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioLDAPPorPathLDAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioLDAPJSON">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioLDAPJSON" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioXLDAP">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/ValidarUsuarioXLDAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NoValidarUsuarioXLDAP">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/NoValidarUsuarioXLDAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncriptarRijndael">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/EncriptarRijndael" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EncriptarRijndaelTemporal">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/EncriptarRijndaelTemporal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesencriptarRijndael">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/DesencriptarRijndael" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DesencriptarRijndaelTemporal">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/DesencriptarRijndaelTemporal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPerfilXIdSistema">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/ListarPerfilXIdSistema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCargo">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/ListarCargo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXIdCargo">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioXIdCargo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXIdSistema">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioXIdSistema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioXNombreCompleto">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioXNombreCompleto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarUsuarioXRolXSistemaXUnidad">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/agregarUsuarioXRolXSistemaXUnidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuarioXRolXSistemaXUnidad">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/deleteUsuarioXRolXSistemaXUnidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioLdap">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/listarUsuarioLdap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarPerfilAUsuario">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/AgregarPerfilAUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarUnicoPerfilAUsuario">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/AgregarUnicoPerfilAUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfilAUsuario">
+      <soap12:operation soapAction="http://ws.esan.edu.pe/seguridad/EliminarPerfilAUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Seguridad">
+    <wsdl:port name="SeguridadSoap" binding="tns:SeguridadSoap">
+      <soap:address location="http://srvvrapp08/SeguridadEsan/Services/Seguridad.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SeguridadSoap12" binding="tns:SeguridadSoap12">
+      <soap12:address location="http://srvvrapp08/SeguridadEsan/Services/Seguridad.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

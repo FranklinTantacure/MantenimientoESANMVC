@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "PaginaInicio2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Interfaz de Cambio de EsPlanta</title>
+    <!-- Agrega la referencia a jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Agrega la referencia a DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+</head>
+<br />
+<br />
+
+<body>
+    @*<div>
+            <label for="txtNombre">Nombre:</label>
+            <input type="text" id="txtNombre" />
+            <button id="btnBuscar">Buscar</button>
+        </div>
+        <br />*@
+    <br />
+    <br />
+    <br />
+
+    <table id="tablados" class="table table-striped text-center" style="width:100%">
+        <thead>
+            <tr>
+                <th>IdActor</th>
+                <th>Nombre Completo</th>
+                <th>EsPlanta</th>
+
+            </tr>
+        </thead>
+
+    </table>
+</body>
+</html>
+
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#tablados").DataTable({
+                ajax: {
+                    url: "@Url.Action("BuscarActores", "Home")",
+                    type: "GET",
+                    dataType: "json",
+                    dataSrc: ""
+                },
+                columns: [
+                    { data: "IdActor" },
+                    { data: "NombreCompleto" },
+                    {
+                        data: "IdActor",
+                        render: function (data) {
+                            // Verificar si EsPlanta está configurado en 1
+                            var esPlanta = true; // Aquí debes hacer la lógica para determinar si EsPlanta está configurado en 1
+                            var checked = esPlanta ? 'checked' : '';
+                            return '<input type="checkbox" class="checkEsPlanta" data-id="' + data + '" ' + checked + '>';
+                        }
+                    }
+                ]
+            });
+
+
+
+           // Manejar el evento de cambio del checkbox
+                    $('#tablados').on('change', '.checkEsPlanta', function () {
+                        var idActor = $(this).data('id');
+                        var isChecked = $(this).is(':checked');
+                        if (!isChecked) {
+                            // Solicitar confirmación antes de desmarcar el checkbox
+                            if (confirm("¿Estás seguro de que deseas cambiar EsPlanta a 0?")) {
+                                // Realizar una solicitud AJAX para actualizar el valor de EsPlanta a 0
+                                $.ajax({
+                                    url: '@Url.Action("ActualizarEsPlanta", "Home")',
+                                    type: 'POST',
+                                    data: { idActor: idActor },
+                                    success: function (result) {
+                                        if (result.success) {
+                                            alert("EsPlanta actualizado a 0");
+                                            $("#tablados").DataTable().ajax.reload();
+                                        } else {
+                                            console.error(result.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        console.error("Error al actualizar EsPlanta.");
+                                    }
+                                });
+                            } else {
+                                // Volver a marcar el checkbox si el usuario cancela la acción
+                                $(this).prop('checked', true);
+                            }
+                        }
+                    });
+
+        });
+    </script>
+
+
+}
+

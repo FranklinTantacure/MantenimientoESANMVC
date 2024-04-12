@@ -1,0 +1,73 @@
+
+
+CREATE PROCEDURE SP_CambiarEsPlantaListar
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT b.EsPlanta, a.IdActor, a.NombreCompleto
+    FROM Actor a
+    INNER JOIN ActorLaboral b ON a.IdActor = b.IdActor
+    WHERE b.EsPlanta = 1;
+END
+*********************************************************
+*********************************************************
+create PROCEDURE SP_CambiarEsPlanta
+    @IdActor INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    UPDATE ActorLaboral
+    SET EsPlanta = 0
+    WHERE IdActor = @IdActor;
+
+    SELECT  IdActor, NombreCompleto
+    FROM Actor
+    WHERE IdActor = @IdActor;
+END
+************************************************************
+*************************************************************
+CREATE procedure SP_BUSCAR_CURSO  
+@IdActor int  
+as  
+begin  
+SELECT IdAlumno,a.IdCurso,IdSeccion, a.CursoNombre FROM  Curso a  
+INNER JOIN Retiro b on a.IdCurso = b.IdCurso  
+INNER JOIN actor c on c.IdActor = b.IdAlumno  
+ where b.Estado <> 'x' and b.IdSeccion is not null   
+ and IdActor=@IdActor  
+end
+
+--******************************************************
+--******************************************************
+
+create procedure SP_BUSCAR_ALUMNO  
+@Buscar varchar(100)  
+as  
+begin  
+select  distinct a.IdActor, a. NombreCompleto, a.Codigo from Retiro r   
+inner join actor a on a.idactor=r.idalumno   
+inner join Seccion s on r.IdSeccion=s.IdSeccion  
+inner join Promocion p on s.IdPromocion=p.idpromocion  
+where  r.Estado <> 'x' --r.IdFacultad in (1,3)  
+ and r.IdSeccion is not null  
+ and p.IdFacultad in(1,3)  
+ and a.NombreCompleto like '%'+@Buscar+'%' or a.Codigo like '%'+@Buscar+'%'  
+order by 2  
+end  
+
+***********************************************************
+***********************************************************
+EXEC SP_CambiarEsPlanta 20
+
+exec SP_CambiarEsPlantaListar
+
+select * from PromocionZoomdle
+
+
+SELECT IdActor, NombreCompleto  FROM Actor where IdActor = 10
+
+update ActorLaboral
+set Esplanta = 1
+where IdActor = 10

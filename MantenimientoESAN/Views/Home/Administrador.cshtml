@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Administrador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <br />
+    <h2>Codigos Zoomdle</h2>
+    <br />
+
+    <form id="formRegistro" class="needs-validation" novalidate action="@Url.Action("Insertar","Home")" method="post">
+        <div class="modal-body mx-3">
+
+            <div class="md-form mb-4">
+                <i class="fas fa-user prefix grey-text"></i>
+                <label class="form-label">Promocioncodigo</label>
+                <input type="text" class="form-control" name="promocioncodigo" placeholder="Codigo" required />
+
+            </div>
+            <div class="md-form mb-4">
+                <i class="fas fa-envelope prefix grey-text"></i>
+                <label for="apellido" data-error="wrong" data-success="right">Estado</label>
+                <input type="text" name="estado" class="form-control" placeholder="estado" required>
+
+            </div>
+
+            <div class="">
+                <button type="submit" class="btn btn-success">Registrate</button>
+            </div>
+        </div>
+
+    </form>
+    <br />
+    <br />
+
+
+    <table id="myTable" class="table table-striped text-center" style="width:100%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Promocion Codigo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+    </table>
+
+</div>
+
+
+@section scripts {
+
+    <script>
+         $(document).ready(function () {
+             $("#myTable").DataTable({
+                 ajax: {
+                     url: "@Url.Action("Listar", "Home")",
+                     type: "GET",
+                     dataType: "json",
+                     dataSrc: ""
+                 },
+                 columns: [
+                     { data: "ID" },
+                     { data: "PromocionCodigo" },
+                     { data: "Estado" },
+                     {
+                         data: "ID",
+                         render: function (data) {
+                             return '<button type="button" onclick="abrirModalActualizar(' + data + ')" class="btn btn-danger">Estado</button>'
+
+
+                         }
+                     },
+
+                 ]
+
+             });
+
+         })
+
+    </script>
+
+    
+
+}
+
+

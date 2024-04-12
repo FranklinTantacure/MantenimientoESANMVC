@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SisEdutivaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PromocionZoomdle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="PromocionCodigo" Type="nvarchar" MaxLength="255" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Function Name="SP_BUSCAR_ALUMNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Buscar" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_BUSCAR_CURSO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdActor" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_CambiarEsPlanta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdActor" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_CambiarEsPlantaListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SisEdutivaModelStoreContainer">
+    <EntitySet Name="PromocionZoomdle" EntityType="Self.PromocionZoomdle" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

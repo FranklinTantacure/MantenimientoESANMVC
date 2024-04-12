@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SisEdutivaModelStoreContainer" CdmEntityContainer="SisEdutiva_prodEntities">
+    <EntitySetMapping Name="PromocionZoomdle">
+      <EntityTypeMapping TypeName="SisEdutivaModel.PromocionZoomdle">
+        <MappingFragment StoreEntitySet="PromocionZoomdle">
+          <ScalarProperty Name="PromocionCodigo" ColumnName="PromocionCodigo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_BUSCAR_ALUMNO" FunctionName="SisEdutivaModel.Store.SP_BUSCAR_ALUMNO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SisEdutivaModel.SP_BUSCAR_ALUMNO_Result">
+          <ScalarProperty Name="IdActor" ColumnName="IdActor" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_BUSCAR_CURSO" FunctionName="SisEdutivaModel.Store.SP_BUSCAR_CURSO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SisEdutivaModel.SP_BUSCAR_CURSO_Result">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+          <ScalarProperty Name="CursoNombre" ColumnName="CursoNombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_CambiarEsPlanta" FunctionName="SisEdutivaModel.Store.SP_CambiarEsPlanta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SisEdutivaModel.SP_CambiarEsPlanta_Result">
+          <ScalarProperty Name="IdActor" ColumnName="IdActor" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_CambiarEsPlantaListar" FunctionName="SisEdutivaModel.Store.SP_CambiarEsPlantaListar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SisEdutivaModel.SP_CambiarEsPlantaListar_Result">
+          <ScalarProperty Name="EsPlanta" ColumnName="EsPlanta" />
+          <ScalarProperty Name="IdActor" ColumnName="IdActor" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

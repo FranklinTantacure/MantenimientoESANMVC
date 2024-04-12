@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://srvvrapp08/SeguridadEsan/Services/Seguridad.asmx?wsdl" docRef="http://srvvrapp08/SeguridadEsan/Services/Seguridad.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://srvvrapp08/SeguridadEsan/Services/Seguridad.asmx" xmlns:q1="http://ws.esan.edu.pe/seguridad" binding="q1:SeguridadSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://srvvrapp08/SeguridadEsan/Services/Seguridad.asmx" xmlns:q2="http://ws.esan.edu.pe/seguridad" binding="q2:SeguridadSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
